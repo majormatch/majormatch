@@ -1,0 +1,5 @@
+{
+  "model": "balanced_random_forest",
+  "version": "1.0",
+  "traits": ["O", "C", "E", "A", "N"]
+}
