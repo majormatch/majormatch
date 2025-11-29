@@ -26,6 +26,22 @@
     .stat strong{display:block;font-size:20px}
     .stat span{display:block;color:var(--muted);font-size:13px;margin-top:6px}
 
+    /* Appreciation Banner */
+    .appreciation-banner {
+      margin-top: 18px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, rgba(110,231,183,0.08), rgba(6,182,212,0.06));
+      border: 1px solid rgba(110,231,183,0.15);
+      text-align: center;
+    }
+    .appreciation-banner a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
     /* sections */
     section{margin-top:28px}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -35,31 +51,27 @@
     .trait h4{margin:0;font-size:15px}
     .trait p{margin:0;color:var(--muted);font-size:13px}
 
-    /* screenshots placeholder */
     .screens{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     .screenshot{height:220px;border-radius:12px;border:2px dashed rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;color:var(--muted);background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
 
-    /* process & contact */
     .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
     .step{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:10px;text-align:center}
     .step .num{font-size:20px;font-weight:700;color:var(--accent)}
     .cta{display:inline-block;padding:12px 18px;border-radius:10px;background:linear-gradient(90deg,#06b6d4,#6ee7b7);color:#04263a;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(46,229,176,0.12)}
 
-    /* achievement */
     .highlight{display:flex;gap:16px;align-items:center;padding:18px;border-radius:12px;background:linear-gradient(90deg, rgba(110,231,183,0.06), rgba(6,182,212,0.03));border:1px solid rgba(110,231,183,0.06)}
     .counter{font-size:28px;font-weight:800;color:var(--accent)}
 
     footer{margin-top:40px;padding:22px;text-align:center;color:var(--muted);font-size:13px}
 
-    /* responsive */
     @media(max-width:980px){.hero{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.screens{grid-template-columns:1fr}}
     @media(max-width:520px){.steps{grid-template-columns:1fr}}
 
-    /* little transitions */
     .fade-in{opacity:0;transform:translateY(8px);transition:all 600ms cubic-bezier(.2,.9,.3,1)}
     .fade-in.active{opacity:1;transform:none}
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
@@ -74,6 +86,13 @@
         <a class="cta" href="#contact">Ask Us to Run the Model</a>
       </nav>
     </header>
+
+    <!-- Letter of Appreciation Banner -->
+    <div class="appreciation-banner fade-in">
+      <a href="SD-Public-School-Letter-Of-Appreciation.pdf" target="_blank">
+        📄 Letter of Appreciation from SD Public School (View PDF)
+      </a>
+    </div>
 
     <div class="hero">
       <div class="card fade-in" id="intro">
@@ -120,9 +139,10 @@
 
     <section id="screens" class="card fade-in">
       <h2>Sample report</h2>
-      <p style="color:var(--muted)"></p>
       <div class="screens" style="margin-top:12px">
-        <div class="screenshot">   <img src="report2.png" alt="Description of image" style="width:500px; height:250px;"> </div>
+        <div class="screenshot">
+          <img src="report2.png" alt="Description of image" style="width:500px; height:250px;">
+        </div>
       </div>
     </section>
 
@@ -132,15 +152,15 @@
       <div class="steps" style="margin-top:12px">
         <div class="step"><div class="num">1</div><div style="margin-top:8px">Reach out via the contact mail - ikaartik4@gmail.com</div></div>
         <div class="step"><div class="num">2</div><div style="margin-top:8px">Agree to our data privacy terms and be informed about the data we collect.</div></div>
-        <div class="step"><div class="num">3</div><div style="margin-top:8px">We run the model & send personalized reports - all for free</div></div>      </div>
+        <div class="step"><div class="num">3</div><div style="margin-top:8px">We run the model & send personalized reports - all for free</div></div>
+      </div>
 
       <div style="margin-top:14px;display:flex;gap:12px;align-items:center">
         <a class="cta" href="#contact">Request a Report</a>
-        <a href="#" style="color:var(--muted);text-decoration:none">Download sample report (placeholder)</a>
       </div>
     </section>
 
-        <section class="fade-in card">
+    <section class="fade-in card">
       <h2>How the AI & ML behind MajorMatch works</h2>
       <p style="color:var(--muted);line-height:1.6">
         Behind the scenes, MajorMatch uses a combination of data preprocessing, personality trait mapping, and 
@@ -218,15 +238,18 @@
   </div>
 
   <script>
-    // reveal on load
     document.addEventListener('DOMContentLoaded',()=>{
       document.querySelectorAll('.fade-in').forEach((el,i)=>setTimeout(()=>el.classList.add('active'),100+ (i*120)));
-      // counter animation to 700
+
       const el = document.getElementById('impactCount');
       let start=0,target=500,duration=1200,stepTime=Math.max(20,Math.floor(duration/target));
-      let curr=start;const t=setInterval(()=>{curr+=Math.ceil(target/30);if(curr>=target){curr=target;clearInterval(t);}el.textContent=curr;},stepTime);
+      let curr=start;
+      const t=setInterval(()=>{
+        curr+=Math.ceil(target/30);
+        if(curr>=target){curr=target;clearInterval(t);}
+        el.textContent=curr;
+      },stepTime);
 
-      // traits click
       document.querySelectorAll('.trait').forEach(tr=>{
         tr.addEventListener('click',()=>{
           const d=tr.getAttribute('data-desc');
